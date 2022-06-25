@@ -42,4 +42,9 @@ public class CustomerServiceImpl implements CustomerService {
         Type type = new TypeToken<List<CustomerDTO>>() {}.getType();
         return modelMapper.map(all,type);
     }
+
+    @Override
+    public void deleteCustomer(String id) {
+        customerRepo.deleteById(id);
+    }
 }

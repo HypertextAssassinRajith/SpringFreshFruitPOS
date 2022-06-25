@@ -14,4 +14,6 @@ public interface CustomerService {
     public void saveCustomer(CustomerDTO dto);
 
     public List<CustomerDTO> getAllCustomers();
+
+    public  void deleteCustomer(String id);
 }

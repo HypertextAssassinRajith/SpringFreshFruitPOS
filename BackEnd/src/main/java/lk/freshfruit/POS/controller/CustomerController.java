@@ -23,12 +23,17 @@ public class CustomerController {
     CustomerService customerService;
 
     @PostMapping
-    public void saveCustomer(@ModelAttribute CustomerDTO dto){
+    public void saveCustomer(@ModelAttribute CustomerDTO dto){ // modelattribute annotation not important!
         customerService.saveCustomer(dto);
     }
 
     @GetMapping()
     public List<CustomerDTO> getAllCustomers(){
         return customerService.getAllCustomers();
+    }
+
+    @DeleteMapping(params = {"id"})
+    public void deleteCustomer(@RequestParam String id){ //requestsparam annotation not important!
+        customerService.deleteCustomer(id);
     }
 }
