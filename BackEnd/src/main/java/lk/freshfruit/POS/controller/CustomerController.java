@@ -1,6 +1,7 @@
 package lk.freshfruit.POS.controller;
 
 import lk.freshfruit.POS.dto.CustomerDTO;
+import lk.freshfruit.POS.entity.Customer;
 import lk.freshfruit.POS.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -35,5 +36,10 @@ public class CustomerController {
     @DeleteMapping(params = {"id"})
     public void deleteCustomer(@RequestParam String id){ //requestsparam annotation not important!
         customerService.deleteCustomer(id);
+    }
+
+    @PutMapping
+    public void updateCustomer(@RequestBody CustomerDTO dto){ //requestsbody annotation is important!
+        customerService.updateCustomer(dto);
     }
 }

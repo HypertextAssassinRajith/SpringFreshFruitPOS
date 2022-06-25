@@ -16,4 +16,6 @@ public interface CustomerService {
     public List<CustomerDTO> getAllCustomers();
 
     public  void deleteCustomer(String id);
+
+    public void updateCustomer(CustomerDTO dto);
 }
