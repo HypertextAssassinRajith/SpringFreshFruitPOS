@@ -1,4 +1,4 @@
-package lk.freshfruit.POS.dto;
+package lk.freshfruit.POS.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,16 +13,15 @@ import javax.persistence.Id;
  * @project : SpringFreshFruitPOS
  * @created : 2022 June 25
  **/
-
-
-@NoArgsConstructor
+@Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @ToString
-public class CustomerDTO {
+public class Item {
     @Id
-    private String id;
-    private String name;
-    private String address;
-    private double salary;
+    private String code;
+    private String description;
+    private int qtyAvailable;
+    private double price;
 }

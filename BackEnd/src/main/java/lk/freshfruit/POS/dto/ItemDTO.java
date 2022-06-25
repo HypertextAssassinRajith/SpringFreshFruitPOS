@@ -19,10 +19,10 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Data
 @ToString
-public class CustomerDTO {
+public class ItemDTO {
     @Id
-    private String id;
-    private String name;
-    private String address;
-    private double salary;
+    private String code;
+    private String description;
+    private int qtyAvailable;
+    private double price;
 }
