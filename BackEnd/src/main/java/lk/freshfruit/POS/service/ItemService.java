@@ -10,8 +10,11 @@ import java.util.List;
  * @created : 2022 June 25
  **/
 public interface ItemService {
-
     public void saveItem(ItemDTO dto);
 
     public List<ItemDTO> getAllItems();
+
+    public void deleteItem(String code);
+
+    public void updateItem(ItemDTO dto);
 }

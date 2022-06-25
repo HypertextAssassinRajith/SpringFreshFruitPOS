@@ -29,4 +29,15 @@ public class ItemController {
     public void saveItem(ItemDTO dto){
         itemService.saveItem(dto);
     }
+
+
+    @DeleteMapping(params = {"code"})
+    public void deleteItem(String code){
+        itemService.deleteItem(code);
+    }
+
+    @PutMapping
+    public void updateItem(@RequestBody ItemDTO dto){
+        itemService.updateItem(dto);
+    }
 }

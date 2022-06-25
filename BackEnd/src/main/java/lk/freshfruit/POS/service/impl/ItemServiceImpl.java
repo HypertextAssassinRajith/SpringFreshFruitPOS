@@ -4,7 +4,6 @@ import lk.freshfruit.POS.dto.ItemDTO;
 import lk.freshfruit.POS.entity.Item;
 import lk.freshfruit.POS.repo.ItemRepo;
 import lk.freshfruit.POS.service.ItemService;
-import net.bytebuddy.description.method.MethodDescription;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,19 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public List<ItemDTO> getAllItems() {
         List<Item> all = itemRepo.findAll();
-        Type type = new TypeToken<List<ItemDTO>>() {}.getType();
-        return modelMapper.map(all,type);
+        Type type = new TypeToken<List<ItemDTO>>() {
+        }.getType();
+        return modelMapper.map(all, type);
+    }
+
+    @Override
+    public void deleteItem(String code) {
+        itemRepo.deleteById(code);
+    }
+
+    @Override
+    public void updateItem(ItemDTO dto) {
+        Item item = modelMapper.map(dto, Item.class);
+        itemRepo.save(item);
     }
 }
