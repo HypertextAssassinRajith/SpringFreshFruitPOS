@@ -33,8 +33,9 @@ public class ItemServiceImpl implements ItemService {
         if (!itemRepo.existsById(dto.getCode())){
             Item item = modelMapper.map(dto, Item.class);
             itemRepo.save(item);
+        }else {
+            throw new RuntimeException("Item : "+dto.getCode()+" , Already Exists!!");
         }
-        throw new RuntimeException("Item : "+dto.getCode()+" , Already Exists!!");
     }
 
     @Override
@@ -49,8 +50,9 @@ public class ItemServiceImpl implements ItemService {
     public void deleteItem(String code) {
         if (itemRepo.existsById(code)){
             itemRepo.deleteById(code);
+        }else {
+            throw new RuntimeException("No such Item By Code : "+code+" , Exists!!");
         }
-        throw new RuntimeException("No such Item By Code : "+code+" , Exists!!");
     }
 
     @Override
@@ -58,7 +60,8 @@ public class ItemServiceImpl implements ItemService {
         if (itemRepo.existsById(dto.getCode())){
             Item item = modelMapper.map(dto, Item.class);
             itemRepo.save(item);
+        }else {
+            throw new RuntimeException("There are No Item To Update By Code : "+dto.getCode());
         }
-        throw new RuntimeException("There are No Item To Update By Code : "+dto.getCode());
     }
 }

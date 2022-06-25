@@ -2,6 +2,7 @@ package lk.freshfruit.POS.controller;
 
 import lk.freshfruit.POS.dto.ItemDTO;
 import lk.freshfruit.POS.service.ItemService;
+import lk.freshfruit.POS.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,23 +22,26 @@ public class ItemController {
     ItemService itemService;
 
     @GetMapping
-    public List<ItemDTO> getAllItems(){
-        return itemService.getAllItems();
+    public ResponseUtil getAllItems(){
+        return new ResponseUtil(200,"Done!",itemService.getAllItems());
     }
 
     @PostMapping()
-    public void saveItem(ItemDTO dto){
+    public ResponseUtil saveItem(ItemDTO dto){
         itemService.saveItem(dto);
+       return new ResponseUtil(200,"Item : "+dto.getCode()+" is Successfully Saved",null);
     }
 
 
     @DeleteMapping(params = {"code"})
-    public void deleteItem(String code){
+    public ResponseUtil deleteItem(String code){
         itemService.deleteItem(code);
+        return new ResponseUtil(200,"Item : "+code+" is Deleted!!",null);
     }
 
     @PutMapping
-    public void updateItem(@RequestBody ItemDTO dto){
+    public ResponseUtil updateItem(@RequestBody ItemDTO dto){
         itemService.updateItem(dto);
+        return new ResponseUtil(200,"Item : "+dto.getCode()+" Updated!!",null);
     }
 }
