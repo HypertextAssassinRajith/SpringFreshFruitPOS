@@ -32,8 +32,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void saveCustomer(CustomerDTO dto) {
-        Customer entity = modelMapper.map(dto, Customer.class);
-        customerRepo.save(entity);
+        if (!customerRepo.existsById(dto.getId())){
+            Customer entity = modelMapper.map(dto, Customer.class);
+            customerRepo.save(entity);
+        }
+        throw new RuntimeException("Customer : "+dto.getId()+" , Already Exists!!");
     }
 
     @Override
@@ -45,12 +48,18 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomer(String id) {
-        customerRepo.deleteById(id);
+        if (customerRepo.existsById(id)){
+            customerRepo.deleteById(id);
+        }
+        throw new RuntimeException("No such Customer By ID : "+id+" , Exists!!");
     }
 
     @Override
     public void updateCustomer(CustomerDTO dto) {
-        Customer customer = modelMapper.map(dto, Customer.class);
-        customerRepo.save(customer);
+        if (customerRepo.existsById(dto.getId())){
+            Customer customer = modelMapper.map(dto, Customer.class);
+            customerRepo.save(customer);
+        }
+        throw new RuntimeException("There are No Customer To Update By ID : "+dto.getId());
     }
 }
