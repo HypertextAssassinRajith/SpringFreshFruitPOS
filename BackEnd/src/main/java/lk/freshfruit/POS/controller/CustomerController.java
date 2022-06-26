@@ -32,17 +32,20 @@ public class CustomerController {
         return new ResponseUtil(200,"Customer : "+dto.getId()+" is Successfully Saved",null);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @GetMapping()
     public ResponseUtil getAllCustomers(){
         return new ResponseUtil(200,"Done!",customerService.getAllCustomers());
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @DeleteMapping(params = {"id"})
     public ResponseUtil deleteCustomer(@RequestParam String id){ //requestsparam annotation not important!
         customerService.deleteCustomer(id);
         return new ResponseUtil(200,"Customer : "+id+" is Deleted!!",null);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PutMapping
     public ResponseUtil updateCustomer(@RequestBody CustomerDTO dto){ //requestsbody annotation is important!
         customerService.updateCustomer(dto);
