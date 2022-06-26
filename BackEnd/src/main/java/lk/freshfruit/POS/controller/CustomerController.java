@@ -5,6 +5,7 @@ import lk.freshfruit.POS.entity.Customer;
 import lk.freshfruit.POS.service.CustomerService;
 import lk.freshfruit.POS.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,8 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED) //201
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO dto){ // modelattribute annotation not important!
         customerService.saveCustomer(dto);
         return new ResponseUtil(200,"Customer : "+dto.getId()+" is Successfully Saved",null);
