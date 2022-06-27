@@ -1,6 +1,6 @@
 # SpringFreshFruitPOS
 **Fruit Shop POS  From Maven and Spring**
-![](BackEnd/src/main/resources/readme/Fresh Fruit  Read Me Header.gif)
+![header.gif](BackEnd/src/main/resources/readme/header.gif)
 
 ### Framework Used
 
