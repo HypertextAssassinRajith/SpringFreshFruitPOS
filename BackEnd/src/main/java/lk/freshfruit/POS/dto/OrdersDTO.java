@@ -1,9 +1,13 @@
 package lk.freshfruit.POS.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * @author : Rajith Sanjaya
@@ -15,9 +19,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @Data
 @ToString
-public class OrderDetailsDTO {
-    private String oId;
-    private String itemCode;
-    private int qty;
-    private double price;
+public class OrdersDTO{
+    private String orderId;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private String date;
+    private CustomerDTO customer;
+    private double total;
 }
