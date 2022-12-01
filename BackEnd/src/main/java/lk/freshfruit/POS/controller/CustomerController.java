@@ -27,7 +27,7 @@ public class CustomerController {
 
     @ResponseStatus(HttpStatus.CREATED) //201
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO dto){ // modelattribute annotation not important!
+    public ResponseUtil saveCustomer(@RequestBody CustomerDTO dto){ // modelattribute annotation not important!
         customerService.saveCustomer(dto);
         return new ResponseUtil(200,"Customer : "+dto.getId()+" is Successfully Saved",null);
     }
